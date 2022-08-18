@@ -1,0 +1,20 @@
+{
+  "name": "pff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "front": "cd front && npm start",
+    "back": "cd back && npm run back",
+    "dev": "concurrently \"npm run front\" \"npm run back\""
+  },
+  "author": "ahlemnawress",
+  "license": "ISC",
+  "dependencies": {
+    "@react-pdf-viewer/core": "^3.6.0",
+    "@react-pdf-viewer/default-layout": "^3.6.0",
+    "concurrently": "^7.3.0",
+    "react-circular-progressbar": "^2.1.0"
+  }
+}
