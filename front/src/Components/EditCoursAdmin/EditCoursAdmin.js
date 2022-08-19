@@ -12,8 +12,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
-
-  editCours,
   editCoursAdmin,
   getOneCours
 } from "../../Redux/actions/coursActions";
@@ -27,7 +25,7 @@ export default function EditCoursAdmin() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    //const data = new FormData(event.currentTarget);
    
     dispatch(editCoursAdmin(id, updatedCours, navigate));
   };
@@ -37,7 +35,7 @@ export default function EditCoursAdmin() {
   const [updatedCours, setUpdatedCours] = React.useState(oldCours);
   React.useEffect(() => {
     dispatch(getOneCours(id));
-  }, []);
+  }, [dispatch,id]);
   React.useEffect(() => {
     setUpdatedCours(oldCours);
   }, [oldCours]);

@@ -26,7 +26,7 @@ export default function EditCours() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    //const data = new FormData(event.currentTarget);
   
     dispatch(editCours(id, updatedCours, navigate));
   };
@@ -36,7 +36,7 @@ export default function EditCours() {
   const [updatedCours, setUpdatedCours] = React.useState(oldCours);
   React.useEffect(() => {
     dispatch(getOneCours(id));
-  }, []);
+  }, [dispatch,id]);
   React.useEffect(() => {
     setUpdatedCours(oldCours);
   }, [oldCours]);

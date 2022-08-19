@@ -3,7 +3,6 @@ import { Carousel, Toast } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import 'animate.css';
 import './HomeStyle.css';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (

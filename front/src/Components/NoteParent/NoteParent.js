@@ -18,7 +18,7 @@ export default function NoteP() {
     React.useEffect(() => {
       dispatch(getOnePupil());
       dispatch(getCurrentuser());
-    }, []);
+    }, [dispatch]);
   return (
     <div>
     <TableContainer component={Paper} >

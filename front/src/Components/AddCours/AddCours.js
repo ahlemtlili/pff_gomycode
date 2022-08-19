@@ -28,12 +28,7 @@ export default function AddCours() {
     const data = new FormData();
     data.append("pdfcours",image)
     data.append("nameCours",name)
-    // console.log({
-    //   name: data.get('name'),
-    //   price: data.get('price'),
-    //   available: data.get('available'),
-    // });
-
+ 
     dispatch(addCours(data, navigate))
   };
 

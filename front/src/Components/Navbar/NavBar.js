@@ -38,7 +38,7 @@ const Navbar = () => {
         </NavMenu>
 
         {localStorage.getItem("token")? (
-          <Button variant="primary"
+          <Button variant="primary" style={{"fontSize":"25px" , "color":"white"}}
             onClick={() =>
               dispatch(logoutUser(navigate))
             }> LOGOUT

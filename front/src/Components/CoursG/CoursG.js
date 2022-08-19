@@ -23,7 +23,7 @@ export default function CoursG() {
   React.useEffect(() => {
     dispatch(getAllCours());
     dispatch(getCurrentuser());
-  }, []);
+  }, [dispatch]);
   return (
     <div>
     <TableContainer component={Paper} >
