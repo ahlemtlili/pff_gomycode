@@ -27,11 +27,7 @@ export default function EditCours() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //   name: data.get('name'),
-    //   price: data.get('price'),
-    //   available: data.get('available'),
-    // });
+  
     dispatch(editCours(id, updatedCours, navigate));
   };
   

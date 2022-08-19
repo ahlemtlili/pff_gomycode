@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
-
+const Note = require("../models/note");
+const Cours=require("../models/cours")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const isAuth = require("../middlewares/isAuth");
@@ -147,7 +148,9 @@ router.delete("/parent/:id",async(req,res)=>{
 // delete teacher
 router.delete("/enseignant/:id",async(req,res)=>{
   try {
-    const enseignantDeleted=await User.deleteOne({_id:req.params.id})  
+    const enseignantDeleted=await User.deleteOne({_id:req.params.id})
+    const coursDeleted=await Cours.deleteMany({enseignant:req.params.id})  
+    const notesDeleted=await Note.deleteMany({enseignant:req.params.id})  
     if(enseignantDeleted.deletedCount){return res.send({msg:"teacher deleted "})}
     res.status(400).send({msg:"already deleted"})
   } catch (error) {
@@ -157,7 +160,8 @@ router.delete("/enseignant/:id",async(req,res)=>{
 })
 router.delete("/eleve/:id",async(req,res)=>{
   try {
-    const pupilDeleted=await User.deleteOne({_id:req.params.id})  
+    const pupilDeleted=await User.deleteOne({_id:req.params.id}) 
+    const notesDeleted=await Note.deleteMany({children:req.params.id})  
     if(pupilDeleted.deletedCount){ res.send({msg:"pupil deleted "})
   } else
   {

@@ -103,35 +103,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className='container'>
-        <div className='card'>
-          <div className='box'>
-            <div className='content'>
-              <h2>01</h2>
-              <h3>Candidat</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-                totam velit? Iure nemo labore inventore?
-              </p>
-              <Link to='/register'>Sign Up</Link>
-            </div>
-          </div>
-        </div>
-
-        <div className='card'>
-          <div className='box'>
-            <div className='content'>
-              <h2>02</h2>
-              <h3>Enseignant</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-                totam velit? Iure nemo labore inventore?
-              </p>
-              <Link to='/register'>Sign Up</Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
    
     </div>

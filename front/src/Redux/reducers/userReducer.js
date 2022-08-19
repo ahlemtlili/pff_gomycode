@@ -13,6 +13,8 @@ import {
   LOGOUT,
   SIGNIN_ADMIN_FAIL,
   SIGNIN_ADMIN_SUCCESS,
+  SIGNIN_PARENT_FAIL,
+  SIGNIN_PARENT_SUCCESS,
   SIGNIN_USER_FAIL,
   SIGNIN_USER_SUCCESS,
   SIGNUP_CHILD_FAIL,
@@ -48,6 +50,11 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return { ...state, currentUser: payload.user };
     case SIGNIN_USER_FAIL:
       return { ...state, errors: payload };
+      case SIGNIN_PARENT_SUCCESS:
+        localStorage.setItem("token", payload.token);
+        return { ...state, currentUser: payload.user };
+      case SIGNIN_PARENT_FAIL:
+        return { ...state, errors: payload };
       case SIGNIN_ADMIN_SUCCESS:
         localStorage.setItem("token", payload.token);
         return { ...state, currentUser: payload.user };

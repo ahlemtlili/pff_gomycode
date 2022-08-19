@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { deleteNote, getAllNotes } from '../../Redux/actions/noteActions';
 import { MdDeleteSweep } from 'react-icons/md';
-import { FaSignInAlt } from 'react-icons/fa';
 
 export default function Note() {
     const notes= useSelector(state=>state.noteReducer.notes)

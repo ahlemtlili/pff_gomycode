@@ -41,17 +41,7 @@ router.delete("/:id",async(req,res)=>{
         res.status(400).send("failed to delete") 
     }
 })
-//  delete many notes
-router.delete("/notes/:id",async(req,res)=>{
-  try {
-    const notesdeleted=await Note.deleteMany({children:req.params.id})
-    if(NoteDeleted.deletedCount){return res.send({msg:"notes deleted "})}
-    res.status(400).send({msg:"already deleted"})
-  } catch (error) {
-      console.log(error)
-      res.status(400).send("failed to delete") 
-  }
-})
+
 // update Note 
 router.put("/:id",async(req,res)=>{
   try {

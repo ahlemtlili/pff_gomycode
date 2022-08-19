@@ -4,9 +4,12 @@ export const SIGNUP_USER_SUCCESS = "SIGNUP_USER_SUCCESS";
 //signup child
 export const SIGNUP_CHILD_FAIL = "SIGNUP_CHILD_FAIL";
 export const SIGNUP_CHILD_SUCCESS = "SIGNUP_CHILD_SUCCESS";
-//signin
+//signin user
 export const SIGNIN_USER_FAIL = "SIGNIN_USER_FAIL";
 export const SIGNIN_USER_SUCCESS = "SIGNIN_USER_SUCCESS";
+//signin user
+export const SIGNIN_PARENT_FAIL = "SIGNIN_PARENT_FAIL";
+export const SIGNIN_PARENT_SUCCESS = "SIGNIN_PARENT_SUCCESS";
 //signin admin
 export const SIGNIN_ADMIN_FAIL = "SIGNIN_ADMIN_FAIL";
 export const SIGNIN_ADMIN_SUCCESS = "SIGNIN_ADMIN_SUCCESS";

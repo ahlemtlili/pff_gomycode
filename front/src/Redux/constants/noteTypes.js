@@ -5,9 +5,7 @@ export const GET_NOTE_LOADING = "GET_NOTE_LOADING"
 //delete note  actionsTypes
 export const DELETE_NOTE_FAIL = "DELETE_NOTE_FAIL"
 export const DELETE_NOTE_SUCCESS = "DELETE_NOTE_SUCCESS"
-//delete notes actionsTypes
-export const DELETE_NOTES_FAIL = "DELETE_NOTES_FAIL"
-export const DELETE_NOTES_SUCCESS = "DELETE_NOTES_SUCCESS"
+
 //add NOTE actions types
 export const ADD_NOTE_FAIL = "ADD_NOTE_FAIL"
 export const ADD_NOTE_SUCCESS = "ADD_NOTE_SUCCESS"

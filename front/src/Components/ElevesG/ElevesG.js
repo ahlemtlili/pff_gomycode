@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {deletePupil, getAllEleves, getCurrentuser } from '../../Redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { deleteAllNotes, deleteNote, getAllNotes } from '../../Redux/actions/noteActions';
 import { MdDeleteSweep } from 'react-icons/md';
 
 export default function ElevesG() {
@@ -20,7 +19,6 @@ export default function ElevesG() {
     React.useEffect(() => {
       dispatch(getAllEleves());
       dispatch(getCurrentuser());
-      dispatch(getAllNotes());
     }, []);
   return (
     <div>
@@ -49,7 +47,7 @@ export default function ElevesG() {
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.classe}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.email}</TableCell>
 
-              <TableCell align="left" style={{"fontSize":"20px" }}><div><Button style={{"fontSize":"20px"}} onClick ={()=> {dispatch(deletePupil(el._id));deleteAllNotes(el._id)}} size="small"><MdDeleteSweep/>Delete</Button></div></TableCell>
+              <TableCell align="left" style={{"fontSize":"20px" }}><div><Button style={{"fontSize":"20px"}} onClick ={()=> {dispatch(deletePupil(el._id))}} size="small"><MdDeleteSweep/>Delete</Button></div></TableCell>
 
             </TableRow>
           ))}

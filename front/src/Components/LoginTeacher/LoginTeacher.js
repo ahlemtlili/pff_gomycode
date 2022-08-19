@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signinUser } from "../../Redux/actions/userActions";
+import { signinTeacher } from "../../Redux/actions/userActions";
 import RegisterTeacher from "../RegisterTeacher/RegisterTeacher";
 
 function LoginTeacher() {
@@ -11,7 +11,7 @@ function LoginTeacher() {
   const navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
-    dispatch(signinUser({ email, password }, navigate));
+    dispatch(signinTeacher({ email, password }, navigate));
   };
 
   return (

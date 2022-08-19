@@ -24,17 +24,6 @@ export const deleteNote = (id)=> async dispatch=>{
          }
 
 }
-export const deleteAllNotes = (id)=> async dispatch=>{
-  try {
-       const response =await axios.delete(`http://localhost:5000/note/notes/${id}`)
-       dispatch({type:DELETE_NOTES_SUCCESS})
-       dispatch(getAllNotes())
-      } catch (error) {
-          console.log(error);
-          dispatch({type:DELETE_NOTES_FAIL , payload:error})
-       }
-
-}
 
 export const addNote = (newNote, navigate)=> async dispatch=>{
   console.log(newNote)
