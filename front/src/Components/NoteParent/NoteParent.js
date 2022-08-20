@@ -22,7 +22,7 @@ export default function NoteP() {
   return (
     <div>
     <TableContainer component={Paper} >
-        <h1 style={{ "color":"blueviolet"}}>Here are your student's Marks : <br/> </h1>
+    <h1 style={{ "color":"blueviolet","textAlign":"center","marginBottom":"45px"}}>Here are your student's Marks : <br/> </h1>
       <Table sx={{ minWidth: 650}} aria-label="caption table">
                <TableHead>
           <TableRow style={{}}>

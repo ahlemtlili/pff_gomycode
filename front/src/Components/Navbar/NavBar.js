@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <Nav style={{"fontSize":"35px"}}>
         <NavLink to='/'>
-          <img className='logo' src={logo} alt='logo' />
+          <img className='logo' style={{width:"110px"}} src={logo} alt='logo' />
         </NavLink>
         <Bars />
         <NavMenu>
@@ -47,6 +47,7 @@ const Navbar = () => {
   
      <div>
         <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountParent'><FaSignInAlt/>Account Parent</Link>
+        {" "} {" "} {" "}
          <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountTeacher'><FaSignInAlt />Account Teacher</Link>
           </div>}
    </Nav>

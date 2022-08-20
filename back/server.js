@@ -6,9 +6,7 @@ const app = express()
 app.use(cors()) 
 app.use(express.json())
 app.use("/uploads", express.static(__dirname + "/uploads"));
-app.use('/guest',require('./Routes/guestRouter'))
 app.use('/users',require('./Routes/userRoutes'))
-app.use('/parents',require('./Routes/parentRoutes'))
 app.use('/cours',require('./Routes/coursRoutes'))
 app.use('/note',require('./Routes/noteRoutes'))
 

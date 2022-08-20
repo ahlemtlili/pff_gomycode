@@ -11,7 +11,7 @@ import { getCurrentuser } from '../../Redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { MdDeleteSweep } from 'react-icons/md';
-import { FaSignInAlt } from 'react-icons/fa';
+import {GrUpdate} from "react-icons/gr";
 
 import { deleteCours, getAllCours } from '../../Redux/actions/coursActions';
 import { Typography } from '@mui/material';
@@ -27,7 +27,6 @@ export default function CoursG() {
   return (
     <div>
     <TableContainer component={Paper} >
-        <h1 style={{ "color":"blueviolet"}}>Here are your student's Marks : <br/> </h1>
       <Table sx={{ minWidth: 650}} aria-label="caption table">
                <TableHead>
           <TableRow>
@@ -56,7 +55,7 @@ export default function CoursG() {
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.enseignant.firstName}  {el.enseignant.lastName}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}><div><Button style={{"fontSize":"20px"}} onClick ={()=> dispatch(deleteCours(el._id))} size="small"><MdDeleteSweep/>Delete</Button></div></TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}><div><LinkR to={`/editcoursG/${el._id}`}> 
-                <Button style={{"fontSize":"20px"}} size="small"><MdDeleteSweep/>Update</Button></LinkR></div></TableCell>
+                <Button style={{"fontSize":"20px"}} size="small"><GrUpdate/>Update</Button></LinkR></div></TableCell>
 
             </TableRow>
           ))}
