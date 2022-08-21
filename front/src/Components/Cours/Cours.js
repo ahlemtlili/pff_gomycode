@@ -12,7 +12,7 @@ const Cours = () => {
     useEffect(() => {
       dispatch(getAllCours());
       dispatch(getCurrentuser());
-    }, [dispatch]);
+    }, []);
     return (
       <div>
     <div style={{"display":"flex","justifyContent":'space-around',"marginTop":"20px" , "marginBottom":"50px"}}>  

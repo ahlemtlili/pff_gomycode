@@ -1,5 +1,4 @@
 import React from 'react'
-import './contact.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import emailjs from '@emailjs/browser';

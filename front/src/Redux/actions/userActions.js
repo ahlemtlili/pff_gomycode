@@ -26,7 +26,6 @@ import {
   SIGNUP_USER_FAIL,
   SIGNUP_USER_SUCCESS,
 } from "../constants/userTypes";
-import {POST_MESSAGE_SUCCESS,POST_MESSAGE_FAIL} from "../constants/userTypes"
 
 export const signupUser = (user, navigate) => async (dispatch) => {
   try {
@@ -156,16 +155,6 @@ export const logoutUser = (navigate) => {
   return { type: LOGOUT };
 };
 
-export const postMSG =( newMsg)=>async(dispatch)=>{
-    try {
-        const response = await axios.post('http://localhost:5000/guest/contact',newMsg)
-        console.log(response.data)    
-        dispatch({type:POST_MESSAGE_SUCCESS, payload: response.data})
-    } catch (error) {
-    dispatch({ type: POST_MESSAGE_FAIL, payload: error });
-    }
-    } 
-   
     // delete  parent action
     export const deleteParent = (id)=> async dispatch=>{
       try {

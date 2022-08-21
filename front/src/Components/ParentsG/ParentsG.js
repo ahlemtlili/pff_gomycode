@@ -18,7 +18,7 @@ export default function ParentG() {
     React.useEffect(() => {
       dispatch(getAllParents());
       dispatch(getCurrentuser());
-    }, [dispatch]);
+    }, []);
   return (
     <div>
     <TableContainer component={Paper} >

@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { signupChild} from "../../Redux/actions/userActions";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
   
 const theme = createTheme();
 
@@ -88,6 +89,23 @@ export default function AddChlidren() {
                 />
               </Grid>
               <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Classe
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="classe"
+                    label="classe">
+                    {["1ème année","2ème année","3ème année","4ème année","5ème année","6ème année"].map((el) => (
+                      <MenuItem  value={el}>{el}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -108,16 +126,7 @@ export default function AddChlidren() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="classe"
-                  label="classe"
-                  name="classe"
-                  autoComplete="family-name"
-                />
-              </Grid>
+              
            
             </Grid>
             <Button

@@ -20,7 +20,7 @@ export default function Note() {
     React.useEffect(() => {
       dispatch(getAllNotes());
       dispatch(getCurrentuser());
-    }, [dispatch]);
+    }, []);
   return (
     <div>
     <TableContainer component={Paper} >

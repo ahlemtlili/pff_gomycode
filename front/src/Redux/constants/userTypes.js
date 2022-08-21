@@ -28,10 +28,6 @@ export const GET_PARENTS_SUCCESS = "GET_PARENTS_SUCCESS";
 
 export const GET_TEACHERS_FAIL = "GET_TEACHERS_FAIL";
 export const GET_TEACHERS_SUCCESS = "GET_TEACHERS_SUCCESS";
-//Guest ActionsTypes
-export const POST_MESSAGE_SUCCESS='POST_MESSAGE_SUCCESS'
-
-export const POST_MESSAGE_FAIL='POST_MESSAGE_FAIL'
 
 //delete  parent actionsTypes
 export const DELETE_PARENT_FAIL = "DELETE_PARENT_FAIL"

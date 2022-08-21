@@ -25,6 +25,7 @@ export default function AddNote() {
   const [children, setChildren] = React.useState("");
   const [nameMatiere, setNameMatiere] = React.useState("");
   const [note, setNote] = React.useState("");
+  const [classe, setClasse] = React.useState("");
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getAllEleves());
@@ -32,7 +33,7 @@ export default function AddNote() {
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addNote({nameMatiere:nameMatiere,note:note,children:children},navigate));
+    dispatch(addNote({nameMatiere:nameMatiere,note:note,children:children,classe:classe},navigate));
   };
 
   const eleves = useSelector((state) => state.userReducer.eleves);
@@ -95,6 +96,24 @@ export default function AddNote() {
                   >
                     {eleves.map((eleve) => (
                       <MenuItem value={eleve._id}>{eleve.firstName} {"   "}{eleve.lastName}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Class
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={classe}
+                    label="classe"
+                    onChange={(e)=>setClasse(e.target.value)}
+                    >
+                    {["1ème année","2ème année","3ème année","4ème année","5ème année","6ème année"].map((el) => (
+                      <MenuItem  value={el}>{el}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>

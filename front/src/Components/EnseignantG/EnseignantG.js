@@ -18,7 +18,7 @@ export default function EnseignantG() {
     React.useEffect(() => {
       dispatch(getAllTeachers());
       dispatch(getCurrentuser());
-    }, [dispatch]);
+    }, []);
   return (
     <div>
     <TableContainer component={Paper} >

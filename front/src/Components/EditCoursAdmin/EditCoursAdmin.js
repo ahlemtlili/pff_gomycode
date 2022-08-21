@@ -35,7 +35,7 @@ export default function EditCoursAdmin() {
   const [updatedCours, setUpdatedCours] = React.useState(oldCours);
   React.useEffect(() => {
     dispatch(getOneCours(id));
-  }, [dispatch,id]);
+  }, []);
   React.useEffect(() => {
     setUpdatedCours(oldCours);
   }, [oldCours]);
