@@ -67,5 +67,16 @@ router.get("/noteEleve",isAuth(),async(req,res)=>{
  
 }
 )
+router.get("/details/:id",async(req,res)=>{
+  try {
+     const oneNote=await Note.findOne({_id:req.params.id}) 
+     res.send({oneNote})  
+    } catch (error) {
+        console.log(error)
+        res.status(400).send("failed to get the product")
+    }
+ 
+}
+)
 
 module.exports = router;

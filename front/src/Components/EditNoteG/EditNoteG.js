@@ -11,35 +11,32 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {
 
-  editCours,
-  getOneCours
-} from "../../Redux/actions/coursActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {editNoteAdmin, getOneNote } from "../../Redux/actions/noteActions";
 
 const theme = createTheme();
 
-export default function EditCours() {
+export default function EditNoteG() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     //const data = new FormData(event.currentTarget);
   
-    dispatch(editCours(id, updatedCours, navigate));
+    dispatch(editNoteAdmin(id, updatedNote, navigate));
   };
   
   const { id } = useParams();
-  const oldCours = useSelector((state) => state.coursReducer.oneCours);
-  const [updatedCours, setUpdatedCours] = React.useState(oldCours);
+  const oldNote = useSelector((state) => state.noteReducer.oneNote);
+  const [updatedNote, setUpdatedNote] = React.useState(oldNote);
   React.useEffect(() => {
-    dispatch(getOneCours(id));
-  }, []);
+    dispatch(getOneNote(id));
+  }, [dispatch,id]);
   React.useEffect(() => {
-    setUpdatedCours(oldCours);
-  }, [oldCours]);
+    setUpdatedNote(oldNote);
+  }, [oldNote]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,7 +54,7 @@ export default function EditCours() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            EDIT COURSE
+            EDIT NOTE
           </Typography>
           <Box
             component="form"
@@ -69,12 +66,12 @@ export default function EditCours() {
               <Grid item xs={12}>
                 <TextField
                   onChange={(e) =>
-                    setUpdatedCours({
-                      ...updatedCours,
-                      nameCours: e.target.value,
+                    setUpdatedNote({
+                      ...updatedNote,
+                      nameMatiere: e.target.value,
                     })
                   }
-                  value={updatedCours.nameCours}
+                  value={updatedNote.nameMatiere}
                   autoComplete="given-name"
                   name="name"
                   required
@@ -83,7 +80,25 @@ export default function EditCours() {
                   label="Name"
                   autoFocus
                 />
-            </Grid></Grid>
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                  onChange={(e) =>
+                    setUpdatedNote({
+                      ...updatedNote,
+                      note: e.target.value,
+                    })
+                  }
+                  value={updatedNote.note}
+                  required
+                  fullWidth
+                  id="note"
+                  label="note"
+                  name="note"
+                  type="Number"
+                />
+              </Grid>
+            </Grid>
 
             <Button
               type="submit"
@@ -91,11 +106,11 @@ export default function EditCours() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Save COURSE
+              Save NOTE
             </Button>
           </Box>
         </Box>
-        <Link to="/cours">
+        <Link to="/noteG">
           <Button
             type="submit"
             fullWidth

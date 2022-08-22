@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_NOTE_FAIL, ADD_NOTE_SUCCESS, DELETE_NOTE_FAIL, DELETE_NOTE_SUCCESS, GET_NOTE_FAIL, GET_NOTE_LOADING, GET_NOTE_SUCCESS, GET_ONE_PUPIL_FAIL, GET_ONE_PUPIL_SUCCESS, UPDATE_ONE_NOTE_FAIL, UPDATE_ONE_NOTE_SUCCESS } from "../constants/noteTypes"
+import { ADD_NOTE_FAIL, ADD_NOTE_SUCCESS, DELETE_NOTE_FAIL, DELETE_NOTE_SUCCESS, GET_NOTE_FAIL, GET_NOTE_LOADING, GET_NOTE_SUCCESS, GET_ONE_NOTE_FAIL, GET_ONE_NOTE_SUCCESS, GET_ONE_PUPIL_FAIL, GET_ONE_PUPIL_SUCCESS, UPDATE_ONE_NOTE_FAIL, UPDATE_ONE_NOTE_SUCCESS } from "../constants/noteTypes"
 
 export const getAllNotes = ()=> async dispatch=>{
     dispatch({type:GET_NOTE_LOADING})
@@ -50,7 +50,22 @@ export const addNote = (newNote, navigate)=> async dispatch=>{
       
       dispatch({type:UPDATE_ONE_NOTE_SUCCESS})
       dispatch(getAllNotes())
-      navigate("/")
+      navigate("/note")
+    } catch (error) {
+      console.log(error);
+      dispatch({type:UPDATE_ONE_NOTE_FAIL,payload:error})
+    }
+  };
+  export const editNoteAdmin=(id,newNote,navigate) => async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/note/${id}`,newNote
+      );
+      console.log(response)
+      
+      dispatch({type:UPDATE_ONE_NOTE_SUCCESS})
+      dispatch(getAllNotes())
+      navigate("/noteG")
     } catch (error) {
       console.log(error);
       dispatch({type:UPDATE_ONE_NOTE_FAIL,payload:error})
@@ -65,6 +80,17 @@ export const addNote = (newNote, navigate)=> async dispatch=>{
     } catch (error) {
       console.log(error);
       dispatch({type:GET_ONE_PUPIL_FAIL,payload:error})
+    }
+  };
+  export const getOneNote=(id) => async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/note/details/${id}`
+      );
+      dispatch({type:GET_ONE_NOTE_SUCCESS,payload:response.data.oneNote})
+    } catch (error) {
+      console.log(error);
+      dispatch({type:GET_ONE_NOTE_FAIL,payload:error})
     }
   };
 

@@ -46,7 +46,7 @@ export default function CoursG() {
               {el.nameCours}
               </TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>
-              <Link to={`/pdf/${el._id}`}>
+              <Link to={`/pdfAdmin/${el._id}`}>
         <Typography gutterBottom variant="h5" component="div">
           {el.nameCours}
         </Typography>

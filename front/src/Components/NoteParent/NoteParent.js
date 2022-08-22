@@ -30,7 +30,8 @@ export default function NoteP() {
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Note</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Enseignant</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Elève</TableCell>
-            
+            <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>classe</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -43,7 +44,8 @@ export default function NoteP() {
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.note}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.enseignant.firstName}  {el.enseignant.lastName}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.firstName}  {el.children.lastName}</TableCell>
-             
+              <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.classe}</TableCell>
+
             </TableRow>
           ))}
         </TableBody>

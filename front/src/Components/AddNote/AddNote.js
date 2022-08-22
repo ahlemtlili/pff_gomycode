@@ -33,7 +33,7 @@ export default function AddNote() {
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addNote({nameMatiere:nameMatiere,note:note,children:children,classe:classe},navigate));
+    dispatch(addNote({nameMatiere:nameMatiere,note:note,children:children},navigate));
   };
 
   const eleves = useSelector((state) => state.userReducer.eleves);
@@ -100,24 +100,7 @@ export default function AddNote() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Class
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={classe}
-                    label="classe"
-                    onChange={(e)=>setClasse(e.target.value)}
-                    >
-                    {["1ème année","2ème année","3ème année","4ème année","5ème année","6ème année"].map((el) => (
-                      <MenuItem  value={el}>{el}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required

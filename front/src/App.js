@@ -37,6 +37,9 @@ import ParentsG from './Components/ParentsG/ParentsG';
 import PdfCourParent from './Components/PdfCourParent/PdfCourParent';
 import ElevesG from './Components/ElevesG/ElevesG';
 import EditCoursAdmin from './Components/EditCoursAdmin/EditCoursAdmin';
+import PdfCourAdmin from './Components/PdfCourAdmin/PdfCour';
+import EditNote from './Components/EditNote/EditNote';
+import EditNoteG from './Components/EditNoteG/EditNoteG';
 
 const Container = styled.div`
   max-width: 100%;
@@ -69,9 +72,13 @@ function App() {
           <Route path="/cours" element={<Cours/>}/>
           <Route path="/editcours/:id" element={<EditCours />} />
           <Route path="/editcoursG/:id" element={<EditCoursAdmin />} />
+          <Route path="/editnote/:id" element={<EditNote/>} />
+          <Route path="/editnoteG/:id" element={<EditNoteG/>} />
 
           <Route path="/pdf/:id" element={<PdfCour/>} />
           <Route path="/pdfParent/:id" element={<PdfCourParent/>} />
+          <Route path="/pdfAdmin/:id" element={<PdfCourAdmin/>} />
+
           <Route path="/note" element={<Note/>}/>
           <Route path='/footer' element={<Footer/>} />
           <Route path="/AddCours" element={<AddCours/>}/>        

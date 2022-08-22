@@ -15,3 +15,6 @@ export const UPDATE_ONE_NOTE_SUCCESS = "UPDATE_ONE_NOTE_SUCCESS"
 //get NOTE one pupil
 export const GET_ONE_PUPIL_FAIL= "GET_ONE_PUPIL_FAIL"
 export const GET_ONE_PUPIL_SUCCESS= "GET_ONE_PUPIL_SUCCESS"
+//details note actions types
+export const GET_ONE_NOTE_FAIL = "GET_ONE_NOTE_FAIL"
+export const GET_ONE_NOTE_SUCCESS = "GET_ONE_NOTE_SUCCESS"

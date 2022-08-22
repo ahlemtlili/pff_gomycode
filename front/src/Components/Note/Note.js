@@ -13,7 +13,8 @@ import Button from 'react-bootstrap/Button';
 import { deleteNote, getAllNotes } from '../../Redux/actions/noteActions';
 import { MdDeleteSweep } from 'react-icons/md';
 import { FaSignInAlt } from 'react-icons/fa';
-
+import { GrUpdate } from 'react-icons/gr';
+import { Link as LinkR} from "react-router-dom";
 export default function Note() {
     const notes= useSelector(state=>state.noteReducer.notes)
     const dispatch = useDispatch();
@@ -26,12 +27,14 @@ export default function Note() {
     <TableContainer component={Paper} >
       <Table sx={{ minWidth: 650}} aria-label="caption table">
                <TableHead>
-          <TableRow style={{}}>
+          <TableRow>
             <TableCell style={{"fontSize":"25px" ,"color":"brown"}}>Name Of Subject</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Note</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Enseignant</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Elève</TableCell>
+            <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>classe</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Delete</TableCell>
+            <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Update</TableCell>
 
           </TableRow>
         </TableHead>
@@ -45,7 +48,10 @@ export default function Note() {
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.note}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.enseignant.firstName}  {el.enseignant.lastName}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.firstName}  {el.children.lastName}</TableCell>
+              <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.classe}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}><div><Button style={{"fontSize":"20px"}} onClick ={()=> dispatch(deleteNote(el._id))} size="small"><MdDeleteSweep/>Delete</Button></div></TableCell>
+              <TableCell align="left" style={{"fontSize":"20px" }}><div><LinkR to={`/editnote/${el._id}`}> 
+                <Button style={{"fontSize":"20px"}} size="small"><GrUpdate/>Update</Button></LinkR></div></TableCell>
 
             </TableRow>
           ))}

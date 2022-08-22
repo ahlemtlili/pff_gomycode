@@ -59,5 +59,16 @@ router.put("/:id",async(req,res)=>{
     res.status(400).send("failed to update")
   }
 })
+router.get("/details/:id",async(req,res)=>{
+  try {
+     const oneCours=await Cours.findOne({_id:req.params.id}) 
+     res.send({oneCours})  
+    } catch (error) {
+        console.log(error)
+        res.status(400).send("failed to get the product")
+    }
+ 
+}
+)
 
 module.exports = router;
