@@ -40,6 +40,9 @@ import EditCoursAdmin from './Components/EditCoursAdmin/EditCoursAdmin';
 import PdfCourAdmin from './Components/PdfCourAdmin/PdfCour';
 import EditNote from './Components/EditNote/EditNote';
 import EditNoteG from './Components/EditNoteG/EditNoteG';
+import PrivateRouteAdmin from './Components/Privates/PrivateRouteAdmin';
+import PrivateRouteParent from './Components/Privates/PrivateRouteParent';
+import PrivateRouteTeacher from './Components/Privates/PrivateRouteTeacher';
 
 const Container = styled.div`
   max-width: 100%;
@@ -64,38 +67,39 @@ function App() {
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
         <Routes>
-          <Route path='/' element={<HomePage/>} />
+                  {/* Guest Route */}
+         <Route path='/' element={<HomePage/>} />
           <Route path="/AccountParent" element={<LoginParent/>}/>        
           <Route path="/AccountTeacher" element={<LoginTeacher/>}/>
-          <Route path="/pageTeacher" element={<PageTeacher/>}/>
-          <Route path="/pageParent" element={<PageParent/>}/>
-          <Route path="/cours" element={<Cours/>}/>
-          <Route path="/editcours/:id" element={<EditCours />} />
-          <Route path="/editcoursG/:id" element={<EditCoursAdmin />} />
-          <Route path="/editnote/:id" element={<EditNote/>} />
-          <Route path="/editnoteG/:id" element={<EditNoteG/>} />
-
-          <Route path="/pdf/:id" element={<PdfCour/>} />
-          <Route path="/pdfParent/:id" element={<PdfCourParent/>} />
-          <Route path="/pdfAdmin/:id" element={<PdfCourAdmin/>} />
-
-          <Route path="/note" element={<Note/>}/>
-          <Route path='/footer' element={<Footer/>} />
-          <Route path="/AddCours" element={<AddCours/>}/>        
-          <Route path="/coursParent" element={<CoursParent/>}/>
-          <Route path="/noteParent" element={<NoteParent/>}/>
           <Route path='/contactUs' element={<ContactUs/>} />
-          <Route path="/addChlidren" element={<AddChildren/>}/>
-          <Route path="/coursG" element={<CoursG/>}/>
-          <Route path="/noteG" element={<NoteG/>}/>
-          <Route path="/parentsG" element={<ParentsG/>}/>
-          <Route path="/enseignantG" element={<EnseignantG/>}/>
-          <Route path="/elevesG" element={<ElevesG/>}/>
-
+          <Route path='/footer' element={<Footer/>} />
+                  {/* Admin Routes */}     
           <Route path="/loginAdmin" element={<LoginAdmin/>}/> 
-          <Route path="/pageAdmin" element={<PageAdmin/>}/> 
+          <Route path="/pageAdmin" element={<PrivateRouteAdmin><PageAdmin/></PrivateRouteAdmin>}/>
+          <Route path="/coursG" element={<PrivateRouteAdmin><CoursG/></PrivateRouteAdmin>}/>
+          <Route path="/noteG" element={<PrivateRouteAdmin><NoteG/></PrivateRouteAdmin>}/>
+          <Route path="/parentsG" element={<PrivateRouteAdmin><ParentsG/></PrivateRouteAdmin>}/>
+          <Route path="/enseignantG" element={<PrivateRouteAdmin><EnseignantG/></PrivateRouteAdmin>}/>
+          <Route path="/elevesG" element={<PrivateRouteAdmin><ElevesG/></PrivateRouteAdmin>}/>           
+          <Route path="/editcoursG/:id" element={<PrivateRouteAdmin><EditCoursAdmin /></PrivateRouteAdmin>} />
+          <Route path="/editnoteG/:id" element={<PrivateRouteAdmin><EditNoteG/></PrivateRouteAdmin>} />
+          <Route path="/pdfAdmin/:id" element={<PrivateRouteAdmin><PdfCourAdmin/></PrivateRouteAdmin>} />
+                  {/* Teacher Routes */}
+          <Route path="/pageTeacher" element={<PrivateRouteTeacher><PageTeacher/></PrivateRouteTeacher>}/>
+          <Route path="/cours" element={<PrivateRouteTeacher><Cours/></PrivateRouteTeacher>}/>
+          <Route path="/AddCours" element={<PrivateRouteTeacher><AddCours/></PrivateRouteTeacher>}/>
+          <Route path="/AddNote" element={<PrivateRouteTeacher><AddNote/></PrivateRouteTeacher>}/> 
+          <Route path="/note" element={<PrivateRouteTeacher><Note/></PrivateRouteTeacher>}/>
+          <Route path="/editcours/:id" element={<PrivateRouteTeacher><EditCours /></PrivateRouteTeacher>} />
+          <Route path="/editnote/:id" element={<PrivateRouteTeacher><EditNote/></PrivateRouteTeacher>} />
+          <Route path="/pdf/:id" element={<PrivateRouteTeacher><PdfCour/></PrivateRouteTeacher>} />
+                  {/* parent Routes */}
+           <Route path="/pageParent" element={<PrivateRouteParent><PageParent/></PrivateRouteParent>}/>
+          <Route path="/coursParent" element={<PrivateRouteParent><CoursParent/></PrivateRouteParent>}/>
+          <Route path="/noteParent" element={<PrivateRouteParent><NoteParent/></PrivateRouteParent>}/>
+          <Route path="/addChlidren" element={<PrivateRouteParent><AddChildren/></PrivateRouteParent>}/>
+           <Route path="/pdfParent/:id" element={<PrivateRouteParent><PdfCourParent/></PrivateRouteParent>} />
 
-          <Route path="/AddNote" element={<AddNote/>}/> 
         </Routes>
       </Container>
       <Footer />

@@ -16,7 +16,7 @@ const CoursParent = () => {
     return (
       <div>
   
-    <div style={{display:"flex",justifyContent:"space-evenly",flexWrap:'wrap', "paddingTop":"200px"}}>
+    <div style={{display:"flex",gap:"1rem",flexWrap:'wrap', paddingTop:"200px", width:"1500px", marginLeft:"auto", marginRight:"auto"}}>
     {cours.map(el=><CoursParentCard el={el} key={el._id}/>)}
 </div>
 <Link to="/pageParent">

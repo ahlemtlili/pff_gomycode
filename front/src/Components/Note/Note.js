@@ -24,7 +24,7 @@ export default function Note() {
     }, []);
   return (
     <div>
-    <TableContainer component={Paper} >
+    <TableContainer component={Paper} style={{marginTop:"4rem"}}>
       <Table sx={{ minWidth: 650}} aria-label="caption table">
                <TableHead>
           <TableRow>

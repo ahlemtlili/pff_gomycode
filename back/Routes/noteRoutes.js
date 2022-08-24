@@ -21,7 +21,7 @@ router.post("/addnote",isAuth(),isEns,checkNameMatiere,async (req, res) => {
   }
 });
 // get all notes
-router.get("/",async(req,res)=>{
+router.get("/",isAuth(),async(req,res)=>{
     try {
      const allNotes=await Note.find().populate("enseignant").populate("children")
      res.send(allNotes)  
@@ -31,7 +31,7 @@ router.get("/",async(req,res)=>{
     }
 })
 // delete note
-router.delete("/:id",async(req,res)=>{
+router.delete("/:id",isAuth(),async(req,res)=>{
     try {
       const NoteDeleted=await Note.deleteOne({_id:req.params.id})  
       if(NoteDeleted.deletedCount){return res.send({msg:"note deleted "})}
@@ -43,7 +43,7 @@ router.delete("/:id",async(req,res)=>{
 })
 
 // update Note 
-router.put("/:id",async(req,res)=>{
+router.put("/:id",isAuth(),async(req,res)=>{
   try {
    const result=await Note.updateOne({_id:req.params.id},{$set:{...req.body}})
    const noteUpdated=await Note.findOne({_id:req.params.id})
@@ -67,7 +67,7 @@ router.get("/noteEleve",isAuth(),async(req,res)=>{
  
 }
 )
-router.get("/details/:id",async(req,res)=>{
+router.get("/details/:id",isAuth(),async(req,res)=>{
   try {
      const oneNote=await Note.findOne({_id:req.params.id}) 
      res.send({oneNote})  

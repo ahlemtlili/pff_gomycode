@@ -21,11 +21,11 @@ export default function NoteP() {
     }, []);
   return (
     <div>
-    <TableContainer component={Paper} >
+    <TableContainer component={Paper} style={{marginTop:"4rem"}}>
     <h1 style={{ "color":"blueviolet","textAlign":"center","marginBottom":"45px"}}>Here are your student's Marks : <br/> </h1>
       <Table sx={{ minWidth: 650}} aria-label="caption table">
                <TableHead>
-          <TableRow style={{}}>
+          <TableRow >
             <TableCell style={{"fontSize":"25px" ,"color":"brown"}}>Name Of Subject</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Note</TableCell>
             <TableCell align="left" style={{"fontSize":"25px","color":"brown" }}>Enseignant</TableCell>
@@ -53,7 +53,7 @@ export default function NoteP() {
     </TableContainer>
 
      <Link to="/pageParent">
-     <Button variant="info" style={{"marginTop":"100px","width":"130px","height":"50px","fontSize":"30px"}}>
+     <Button variant="info" style={{"marginTop":"50px","width":"130px","height":"50px","fontSize":"30px"}}>
            Retour
          </Button>
        </Link></div>

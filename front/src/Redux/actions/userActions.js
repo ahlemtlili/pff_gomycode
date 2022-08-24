@@ -53,12 +53,13 @@ export const signupChild = (user, navigate) => async (dispatch) => {
   }
 };
 export const signinTeacher = (user, navigate) => async (dispatch) => {
+  //const currentUser=localStorage.getItem("currentUser")
   try {
     const response = await axios.post(
       "http://localhost:5000/users/login",
       user
     );
-    dispatch({ type: SIGNIN_USER_SUCCESS, payload: response.data });
+    dispatch({ type: SIGNIN_USER_SUCCESS, payload:response.data });
     response.data.user.role ==="enseignant"
       ? navigate("/pageTeacher")
       : alert("vous n'étès pas un enseignant");
@@ -68,6 +69,8 @@ export const signinTeacher = (user, navigate) => async (dispatch) => {
   }
 };
 export const signinParent= (user, navigate) => async (dispatch) => {
+  const currentUser=localStorage.getItem("currentUser")
+
   try {
     const response = await axios.post(
       "http://localhost:5000/users/login",
@@ -83,6 +86,7 @@ export const signinParent= (user, navigate) => async (dispatch) => {
   }
 };
 export const signinAdmin = (user, navigate) => async (dispatch) => {
+  const currentUser=localStorage.getItem("currentUser")
   try {
     const response = await axios.post(
       "http://localhost:5000/users/loginAdmin",

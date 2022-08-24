@@ -6,11 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import { deleteCours } from '../../Redux/actions/coursActions';
-import { useDispatch } from 'react-redux';
+import { deleteCoursTeacher } from '../../Redux/actions/coursActions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function CoursCard({el}) {
- 
+  const currentUser = useSelector(state=>state.userReducer.currentUser)
     const dispatch = useDispatch()
   return (
    <Card style={{width:"200px"}} sx={{ maxWidth: 345 }}>
@@ -29,10 +29,11 @@ export default function CoursCard({el}) {
          added by : {el.enseignant.firstName} {el.enseignant.lastName}
         </Typography>
       </CardContent>
+      {el.enseignant._id===currentUser._id?
       <CardActions>
-        <Button onClick ={()=> dispatch(deleteCours(el._id))} size="small">Delete</Button>
-     <Link to={`/editcours/${el._id}`}>   <Button size="small">Edit</Button></Link>
-      </CardActions>
+       <Button onClick ={()=> dispatch(deleteCoursTeacher(el._id))} size="small">Delete</Button>
+     <Link to={`/editcours/${el._id}`}><Button size="small">Edit</Button></Link>
+      </CardActions>:null  }
     </Card>
     
   );
