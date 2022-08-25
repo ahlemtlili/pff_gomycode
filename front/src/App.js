@@ -12,8 +12,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import HomePage from './Components/HomePage/HomePage';
 import Navbar from './Components/Navbar/NavBar';
 import Footer from './Components/Footer/Footer';
-import LoginParent from './Components/LoginParent/LoginParent';
-import LoginTeacher from './Components/LoginTeacher/LoginTeacher';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PageTeacher from './Components/PageTeacher/PageTeacher';
@@ -28,7 +26,6 @@ import NoteParent from './Components/NoteParent/NoteParent';
 import AddNote from './Components/AddNote/AddNote';
 import ContactUs from './Components/ContactUs/ContactUs';
 import AddChildren from './Components/AddChildren/AddChildren';
-import LoginAdmin from './Components/LoginAdmin/LoginAdmin';
 import PageAdmin from './Components/PageAdmin/PageAdmin';
 import CoursG from './Components/CoursG/CoursG';
 import NoteG from './Components/NoteG/NoteG';
@@ -43,6 +40,9 @@ import EditNoteG from './Components/EditNoteG/EditNoteG';
 import PrivateRouteAdmin from './Components/Privates/PrivateRouteAdmin';
 import PrivateRouteParent from './Components/Privates/PrivateRouteParent';
 import PrivateRouteTeacher from './Components/Privates/PrivateRouteTeacher';
+import Login from './Components/Login/Login';
+import RegisterP from './Components/RegisterP/RegisterP';
+import RegisterT from './Components/RegisterT/RegisterT';
 
 const Container = styled.div`
   max-width: 100%;
@@ -69,12 +69,12 @@ function App() {
         <Routes>
                   {/* Guest Route */}
          <Route path='/' element={<HomePage/>} />
-          <Route path="/AccountParent" element={<LoginParent/>}/>        
-          <Route path="/AccountTeacher" element={<LoginTeacher/>}/>
+         <Route path="/login" element={<Login/>}/>  
+         <Route path="/AccountP" element={<RegisterP/>}/> 
+         <Route path="/AccountT" element={<RegisterT/>}/>        
           <Route path='/contactUs' element={<ContactUs/>} />
           <Route path='/footer' element={<Footer/>} />
                   {/* Admin Routes */}     
-          <Route path="/loginAdmin" element={<LoginAdmin/>}/> 
           <Route path="/pageAdmin" element={<PrivateRouteAdmin><PageAdmin/></PrivateRouteAdmin>}/>
           <Route path="/coursG" element={<PrivateRouteAdmin><CoursG/></PrivateRouteAdmin>}/>
           <Route path="/noteG" element={<PrivateRouteAdmin><NoteG/></PrivateRouteAdmin>}/>

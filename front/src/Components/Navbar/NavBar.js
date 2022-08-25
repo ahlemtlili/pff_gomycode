@@ -32,6 +32,10 @@ const Navbar = () => {
             Contact Us
       
           </NavLink> 
+          <NavLink to='/login' activeStyle>
+            LOGIN
+      
+          </NavLink> 
 
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
@@ -46,9 +50,9 @@ const Navbar = () => {
         ) :
   
      <div>
-        <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountParent'><FaSignInAlt/>Account Parent</Link>
+        <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountP'><FaSignInAlt/>Account Parent</Link>
         {" "} {" "} {" "}
-         <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountTeacher'><FaSignInAlt />Account Teacher</Link>
+         <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountT'><FaSignInAlt />Account Teacher</Link>
           </div>}
    </Nav>
     </>

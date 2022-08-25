@@ -17,94 +17,103 @@ import {
 } from "../../Redux/actions/coursActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 const theme = createTheme();
 
 export default function EditCoursAdmin() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+const { id } = useParams();
+  const oldCours = useSelector((state) => state.coursReducer.oneCours);
+  const dispatch = useDispatch()
+ const navigate = useNavigate()
+ const [image, setImage] = React.useState("")
+ const [name, setName] = React.useState("")
   const handleSubmit = (event) => {
     event.preventDefault();
-    //const data = new FormData(event.currentTarget);
-   
-    dispatch(editCoursAdmin(id, updatedCours, navigate));
+    const data = new FormData();
+    data.append("pdfcours",image)
+    data.append("nameCours",name)
+ 
+    dispatch(editCoursAdmin(id,data, navigate))
   };
-  
-  const { id } = useParams();
-  const oldCours = useSelector((state) => state.coursReducer.oneCours);
-  const [updatedCours, setUpdatedCours] = React.useState(oldCours);
   React.useEffect(() => {
     dispatch(getOneCours(id));
   }, []);
   React.useEffect(() => {
-    setUpdatedCours(oldCours);
-  }, [oldCours]);
+    setName(oldCours.nameCours);
+  }, [oldCours.nameCours]);
 
   return (
+    <div>
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            EDIT COURSE
-          </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  onChange={(e) =>
-                    setUpdatedCours({
-                      ...updatedCours,
-                      nameCours: e.target.value,
-                    })
-                  }
-                  value={updatedCours.nameCours}
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  autoFocus
-                />
-            </Grid></Grid>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          EDIT Course
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="given-name"
+                name="name"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                value={name}
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Save COURSE
-            </Button>
-          </Box>
-        </Box>
-        <Link to="/coursG">
+                autoFocus
+                onChange={(e)=>setName(e.target.value)}
+              />
+            </Grid>
+      
+            <Grid item xs={12}>
+           
+              <TextField
+                required
+                fullWidth
+                id="file"
+                label="file"
+                name="file"
+                type= "file"
+
+                onChange={(e)=>setImage(e.target.files[0])}
+              />
+            </Grid>
+
+          </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Cancel
+            EDIT COURSE
           </Button>
-        </Link>
-      </Container>
-    </ThemeProvider>
+    
+        </Box>
+      </Box>
+    </Container>
+  </ThemeProvider>
+  <Link to="/coursG">
+  <Button
+  style={{"fontSize":"20px" , "color":"white","backgroundColor":"blue"}}
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}>
+    Retour
+  </Button>
+</Link>
+  </div>
   );
 }

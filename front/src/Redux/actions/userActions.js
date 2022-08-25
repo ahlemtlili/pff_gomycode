@@ -15,10 +15,7 @@ import {
   GET_TEACHERS_FAIL,
   GET_TEACHERS_SUCCESS,
   LOGOUT,
-  SIGNIN_ADMIN_FAIL,
-  SIGNIN_ADMIN_SUCCESS,
-  SIGNIN_PARENT_FAIL,
-  SIGNIN_PARENT_SUCCESS,
+
   SIGNIN_USER_FAIL,
   SIGNIN_USER_SUCCESS,
   SIGNUP_CHILD_FAIL,
@@ -34,7 +31,7 @@ export const signupUser = (user, navigate) => async (dispatch) => {
       user
     );
     dispatch({ type: SIGNUP_USER_SUCCESS, payload: response.data.newUser });
-    response.data.newUser.role==="parent"? navigate("/AccountParent"): navigate("/AccountTeacher");
+     navigate("/login")
 } catch (error) {
     console.log(error);
     dispatch({ type: SIGNUP_USER_FAIL, payload: error });
@@ -52,55 +49,23 @@ export const signupChild = (user, navigate) => async (dispatch) => {
     dispatch({ type: SIGNUP_CHILD_FAIL, payload: error });
   }
 };
-export const signinTeacher = (user, navigate) => async (dispatch) => {
-  //const currentUser=localStorage.getItem("currentUser")
+export const signin= (user, navigate) => async (dispatch) => {
   try {
     const response = await axios.post(
       "http://localhost:5000/users/login",
       user
     );
     dispatch({ type: SIGNIN_USER_SUCCESS, payload:response.data });
-    response.data.user.role ==="enseignant"
-      ? navigate("/pageTeacher")
-      : alert("vous n'étès pas un enseignant");
+    if(response.data.user.role ==="enseignant")
+    navigate("/pageTeacher") 
+    else if(response.data.user.role ==="parent" )
+    navigate("/pageParent") 
+    else
+    navigate("/pageAdmin") 
+    
   } catch (error) {
     console.log(error);
     dispatch({ type: SIGNIN_USER_FAIL, payload: error });
-  }
-};
-export const signinParent= (user, navigate) => async (dispatch) => {
-  const currentUser=localStorage.getItem("currentUser")
-
-  try {
-    const response = await axios.post(
-      "http://localhost:5000/users/login",
-      user
-    );
-    dispatch({ type: SIGNIN_PARENT_SUCCESS, payload: response.data });
-    response.data.user.role ==="parent"
-      ? navigate("/pageParent")
-      : alert("vous n'étès pas un parent");
-  } catch (error) {
-    console.log(error);
-    dispatch({ type: SIGNIN_PARENT_FAIL, payload: error });
-  }
-};
-export const signinAdmin = (user, navigate) => async (dispatch) => {
-  const currentUser=localStorage.getItem("currentUser")
-  try {
-    const response = await axios.post(
-      "http://localhost:5000/users/loginAdmin",
-      user
-    );
-    dispatch({ type: SIGNIN_ADMIN_SUCCESS, payload: response.data });
-    
-    response.data.user.role ==="admin"
-    ? navigate("/pageAdmin")
-    : alert("vous n'étès pas un administrateur");
-
-  } catch (error) {
-    console.log(error);
-    dispatch({ type: SIGNIN_ADMIN_FAIL, payload: error });
   }
 };
 export const getCurrentuser = () => async (dispatch) => {

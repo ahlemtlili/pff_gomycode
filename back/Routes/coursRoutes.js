@@ -66,25 +66,24 @@ router.delete("/deleteTeacher/:id",isAuth(),async(req,res)=>{
 })
 
 // update course 
-router.put("/:id",isAuth(),isAdmin,async(req,res)=>{
+router.put("/:id",upload("cours").single("pdfcours"),isAuth(),isAdmin,async(req,res)=>{
   const url = `${req.protocol}://${req.get('host')}`;
-  const { file } = req;
-  try {
-    if(file){
-   const urlcours =`${url}/${file.path}`;
-   const result=await Cours.updateOne({_id:req.params.id},{$set:{...req.body,urlcours}})}
-   else
-   {const result=await Cours.updateOne({_id:req.params.id},{$set:{...req.body}})}
-
-   const courseUpdated=await Cours.findOne({_id:req.params.id})
-
-     if(result.modifiedCount){return res.send({msg:"course updated ",courseUpdated})}
-      res.status(400).send({msg:"already updated"})
-  } catch (error) {
-    console.log(error)
-    res.status(400).send("failed to update")
-  }
-})
+  const {file} = req;
+  try {  
+ if(file){
+  const urlcours =`${url}/${file.path}`;
+    result=await Cours.updateOne({_id:req.params.id},{$set:{...req.body,urlcours}})}
+    else
+    { result=await Cours.updateOne({_id:req.params.id},{$set:{...req.body}})}
+    const courseUpdated=await Cours.findOne({_id:req.params.id})
+   if(result.modifiedCount){return res.send({msg:"course updated ",courseUpdated})}
+       res.status(400).send({msg:"already updated"})
+   } catch (error) {
+     console.log(error)
+     res.status(400).send("failed to update")
+   }
+ })
+  
 // update course teacher
 router.put("/updateTeacher/:id",upload("cours").single("pdfcours"),isAuth(),async(req,res)=>{
   const url = `${req.protocol}://${req.get('host')}`;

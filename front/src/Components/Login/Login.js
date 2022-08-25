@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import {signinParent} from '../../Redux/actions/userActions'
-import RegisterParent from '../RegisterParent/RegisterParent'
+import {signin} from '../../Redux/actions/userActions'
 
-function LoginParent() {
+function Login() {
 	const [email, setEmail] = useState("")
 	const [password, setPasswod] = useState("") 
 const dispatch=useDispatch() 
@@ -16,7 +15,7 @@ const navigate=useNavigate()
     <input type="checkbox" id="flip"/>
     <div className="cover">
       <div className="front">
-        <img src="https://us.123rf.com/450wm/robuart/robuart1710/robuart171000335/87470182-affiche-de-f%C3%AAte-des-parents-avec-l-inscription.jpg" alt=""/>
+        <img src="https://2.bp.blogspot.com/-0avHcdnkiFc/WpcWHgQ1I5I/AAAAAAAADzo/i9ZyS0rcIso-RgDFiWwXTICk4NKDOK5SQCLcBGAs/s1600/L%25E2%2580%2599%25C3%2589cole.jpg" alt=""/>
         <div className="text">
           
         </div>
@@ -43,16 +42,12 @@ const navigate=useNavigate()
               </div>
              
               <div className="button input-box">
-                <input  value="Sumbit"  onClick={()=>dispatch(signinParent({email,password}, navigate))} />
+                <input  value="Sumbit"  onClick={()=>dispatch(signin({email,password}, navigate))} />
               </div>
-              <div className="text sign-up-text">Don't have an account? <label htmlFor="flip">Sigup now</label></div>
             </div>
         </form>
       </div>
-        <div className="signup-form">
-          <div className="title">Signup</div>
-          <RegisterParent/>
-    </div>
+      
     </div>
     </div>
   </div>
@@ -62,4 +57,4 @@ const navigate=useNavigate()
   )
 }
 
-export default LoginParent;
+export default Login;

@@ -69,26 +69,7 @@ router.post("/login",loginRules(),validator, async (req, res) => {
     console.log(error);
   }
 });
-// login admin
-router.post("/loginAdmin",loginRules(),validator, async (req, res) => {
-  const { email, password } = req.body;
 
-  try {
-    const existedUser = await User.findOne({ email });
-    if (!existedUser) {
-      return res.status(400).send({ msg: "bad credential" });
-    }
-    const isMatched = await bcrypt.compare(password, existedUser.password);
-    if (!isMatched) {
-      return res.status(400).send({ msg: "bad credential" });
-    }
-    const payload = { idUser: existedUser._id };
-    const token = await jwt.sign(payload, process.env.secretOrPublicKey);
-    res.send({ user: existedUser, token });
-  } catch (error) {
-    console.log(error);
-  }
-});
 // get current user
 router.get("/currentUser", isAuth(), (req, res) => {
   console.log(req.user);

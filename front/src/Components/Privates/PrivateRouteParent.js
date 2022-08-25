@@ -6,7 +6,7 @@ const PrivateRouteParent = ({children}) => {
 
   return (
     <div>
-        {currentUser && currentUser.role==='parent'?children:<Navigate to="/AccountParent"/>}
+        {currentUser && currentUser.role==='parent'?children:<Navigate to="/login"/>}
     </div>
   )
 }

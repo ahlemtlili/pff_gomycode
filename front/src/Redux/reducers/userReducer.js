@@ -49,27 +49,9 @@ export const userReducer = (state = initialState, { type, payload }) => {
       let user=JSON.stringify(payload.user)
       localStorage.setItem("user",user );
       localStorage.setItem("token", payload.token);
-
       return { ...state, currentUser: payload.user };
-
-
     case SIGNIN_USER_FAIL:
       return { ...state, errors: payload };
-      case SIGNIN_PARENT_SUCCESS:
-        let userParent=JSON.stringify(payload.user)
-        localStorage.setItem("user",userParent );
-        localStorage.setItem("token", payload.token);
-        return { ...state, currentUser: payload.user };
-      case SIGNIN_PARENT_FAIL:
-
-        return { ...state, errors: payload };
-      case SIGNIN_ADMIN_SUCCESS:
-        let userAdmin=JSON.stringify(payload.user)
-        localStorage.setItem("user",userAdmin );
-        localStorage.setItem("token", payload.token);
-        return { ...state, currentUser: payload.user };
-      case SIGNIN_ADMIN_FAIL:
-        return { ...state, errors: payload };
     case GET_CURRENT_USER_SUCCESS:
       return { ...state, currentUser: payload };
     case GET_CURRENT_USER_FAIL:

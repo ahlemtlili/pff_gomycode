@@ -47,7 +47,7 @@ export const addNote = (newNote, navigate)=> async dispatch=>{
     const token=localStorage.getItem("token")
     try {
       const response = await axios.put(
-        `http://localhost:5000/note/${id}`,newNote,{ headers: { Authorization: `Bearer ${token}` } }
+        `http://localhost:5000/note/deleteTeacher/${id}`,newNote,{ headers: { Authorization: `Bearer ${token}` } }
       );
       console.log(response)
       
