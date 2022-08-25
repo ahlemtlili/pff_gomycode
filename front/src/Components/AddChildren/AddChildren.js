@@ -42,7 +42,7 @@ export default function AddChlidren() {
   };
 
   return (
-    <div>
+    <div style={{"fontSize":"25px"}}>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -57,7 +57,7 @@ export default function AddChlidren() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h4">
             Sign up Child
           </Typography>
           <Box
@@ -129,7 +129,7 @@ export default function AddChlidren() {
               
            
             </Grid>
-            <Button
+            <Button style={{"fontSize":"23px"}}
               type="submit"
               fullWidth
               variant="contained"
@@ -139,7 +139,7 @@ export default function AddChlidren() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <LinkR to="/signIn">Already have an account? Sign in</LinkR>
+                <LinkR  style={{"fontSize":"20px"}} to="/signIn">Already have an account? Sign in</LinkR>
               </Grid>
             </Grid>
           </Box>
@@ -148,10 +148,12 @@ export default function AddChlidren() {
       </Container>
     </ThemeProvider>
     <LinkR to="/pageParent">
-    <Button
-    style={{"marginTop":"100px","width":"130px","height":"50px","fontSize":"30px"}}
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}>
+    <Button style={{"fontSize":"20px", "width":"200px","backgroundColor":"blue" , "color":"white" , "marginTop":"158px"}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >     
       Retour
     </Button>
   </LinkR>

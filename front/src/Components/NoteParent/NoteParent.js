@@ -53,8 +53,12 @@ export default function NoteP() {
     </TableContainer>
 
      <Link to="/pageParent">
-     <Button variant="info" style={{"marginTop":"50px","width":"130px","height":"50px","fontSize":"30px"}}>
-           Retour
+     <Button style={{"fontSize":"20px", "width":"200px","backgroundColor":"blue" , "color":"white" , "marginTop":"158px"}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >           Retour
          </Button>
        </Link></div>
   );

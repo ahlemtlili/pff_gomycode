@@ -151,5 +151,17 @@ router.delete("/eleve/:id",isAuth(),isAdmin,async(req,res)=>{
       res.status(400).send("failed to delete") 
   }
 })
+router.put("/:id",isAuth(),async(req,res)=>{
+  try {
+   const result=await User.updateOne({_id:req.params.id},{$set:{...req.body}})
+   const userUpdated=await User.findOne({_id:req.params.id})
+
+     if(result.modifiedCount){return res.send({msg:"user updated ",userUpdated})}
+      res.status(400).send({msg:"already updated"})
+  } catch (error) {
+    console.log(error)
+    res.status(400).send("failed to update")
+  }
+})
 
 module.exports = router;

@@ -11,16 +11,13 @@ import {
   GET_TEACHERS_FAIL,
   GET_TEACHERS_SUCCESS,
   LOGOUT,
-  SIGNIN_ADMIN_FAIL,
-  SIGNIN_ADMIN_SUCCESS,
-  SIGNIN_PARENT_FAIL,
-  SIGNIN_PARENT_SUCCESS,
   SIGNIN_USER_FAIL,
   SIGNIN_USER_SUCCESS,
   SIGNUP_CHILD_FAIL,
   SIGNUP_CHILD_SUCCESS,
   SIGNUP_USER_FAIL,
   SIGNUP_USER_SUCCESS,
+  UPDATE_ONE_USER_FAIL,
 } from "../constants/userTypes";
 
 const initialState = {
@@ -30,6 +27,7 @@ const initialState = {
   eleves:[],
   parents:[],
   enseignants:[],
+  oneUser:{}
   
 };
 export const userReducer = (state = initialState, { type, payload }) => {
@@ -68,6 +66,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
                 return { ...state, enseignants:payload };
                 case GET_TEACHERS_FAIL:
                   return { ...state, errors: payload };
+                  case UPDATE_ONE_USER_FAIL: return {...state, errors: payload}
+
     case LOGOUT:
       localStorage.removeItem("token");
       return {

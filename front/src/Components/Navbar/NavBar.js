@@ -50,9 +50,9 @@ const Navbar = () => {
         ) :
   
      <div>
-        <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountP'><FaSignInAlt/>Account Parent</Link>
+        <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountP'><FaSignInAlt/>Sign up Parent</Link>
         {" "} {" "} {" "}
-         <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountT'><FaSignInAlt />Account Teacher</Link>
+         <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white"}} to='/AccountT'><FaSignInAlt />Sign up Teacher</Link>
           </div>}
    </Nav>
     </>

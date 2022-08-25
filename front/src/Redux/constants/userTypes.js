@@ -33,5 +33,8 @@ export const DELETE_TEACHER_SUCCESS = "DELETE_TEACHER_SUCCESS"
 //delete teacher  actionsTypes
 export const DELETE_PUPIL_FAIL = "DELETE_PUPIL_FAIL"
 export const DELETE_PUPIL_SUCCESS = "DELETE_PUPIL_SUCCESS"
+//update user actions types
+export const UPDATE_ONE_USER_FAIL = "UPDATE_ONE_USER_FAIL"
+export const UPDATE_ONE_USER_SUCCESS = "UPDATE_ONE_USER_SUCCESS"
 //logout:
 export const LOGOUT = "LOGOUT";

@@ -43,7 +43,7 @@ export default function RegisterT() {
   };
 
   return (
-    <div>
+    <div style={{"fontSize":"50px"}}>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -58,7 +58,7 @@ export default function RegisterT() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h4">
             Sign up Teacher
           </Typography>
           <Box
@@ -137,7 +137,7 @@ export default function RegisterT() {
               
            
             </Grid>
-            <Button
+            <Button style={{"fontSize":"20px"}}
               type="submit"
               fullWidth
               variant="contained"
@@ -147,7 +147,7 @@ export default function RegisterT() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <LinkR to="/login">Already have an account? Sign in</LinkR>
+                <LinkR style={{"fontSize":"23px"}} to="/login">Already have an account? Sign in</LinkR>
               </Grid>
             </Grid>
           </Box>

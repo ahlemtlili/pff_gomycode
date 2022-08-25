@@ -40,7 +40,7 @@ const PdfCour = () => {
     <div style={{"display":"flex" ,"justifyContent":"center" ,"paddingTop":"80px"}}>
    
    <nav >     <Link to="/cours">
-          <Button
+          <Button style={{ "width":"200px","backgroundColor":"blue" , "color":"white"}}
             type="submit"
             fullWidth
             variant="contained"
@@ -48,27 +48,28 @@ const PdfCour = () => {
           >
            Retour
           </Button>
-        </Link>
-      <br/>
-      <div style={{"paddingTop":"25px"}}>   
+        </Link> <br/> <br/>
+     
+       {"  "}
+   
 
-        <Button 
+        <Button  style={{ "width":"150px","backgroundColor":"blue" , "color":"white"}}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }} onClick={goToPrevPage}>Prev</Button>
-            <br/>
-        <Button
+         {" "}  {" "} 
+         {" "}<Button style={{"width":"150px","backgroundColor":"blue" , "color":"white" , "marginRight":"90px"}}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }} onClick={goToNextPage}>Next</Button>
-            </div>
-        <p>
+         
+        <p style={{"color":"brown", "marginTop":"25px"}}>
             Page {pageNumber} of {numPages}
         </p>
-       
+    
     </nav>
 
-    <Document
+    <Document    
         file={cour.urlcours}
         onLoadSuccess={onDocumentLoadSuccess}
     >

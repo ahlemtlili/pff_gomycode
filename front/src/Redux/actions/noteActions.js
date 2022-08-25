@@ -56,9 +56,7 @@ export const addNote = (newNote, navigate)=> async dispatch=>{
       navigate("/note")
     } catch (error) {
       console.log(error);
-      dispatch({type:UPDATE_ONE_NOTE_FAIL,payload:error})
-    }
-  };
+      dispatch({type:UPDATE_ONE_NOTE_FAIL,payload:error})}};
   export const editNoteAdmin=(id,newNote,navigate) => async (dispatch) => {
     const token=localStorage.getItem("token")
     try {

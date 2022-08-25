@@ -94,10 +94,12 @@ export default function AddCours() {
       </Container>
     </ThemeProvider>
     <LinkR to="/cours">
-    <Button
-    style={{"fontSize":"20px" , "color":"white","backgroundColor":"blue"}}
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}>
+    <Button style={{ "width":"200px","backgroundColor":"blue" , "color":"white"}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
       Retour
     </Button>
   </LinkR>

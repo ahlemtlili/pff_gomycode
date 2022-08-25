@@ -22,6 +22,8 @@ import {
   SIGNUP_CHILD_SUCCESS,
   SIGNUP_USER_FAIL,
   SIGNUP_USER_SUCCESS,
+  UPDATE_ONE_USER_FAIL,
+  UPDATE_ONE_USER_SUCCESS,
 } from "../constants/userTypes";
 
 export const signupUser = (user, navigate) => async (dispatch) => {
@@ -166,5 +168,21 @@ export const logoutUser = (navigate) => {
               console.log(error);
               dispatch({type:DELETE_PUPIL_FAIL , payload:error})
            }
-  
   }
+
+  export const editUser=(id,newUser,navigate) => async (dispatch) => {
+    const token=localStorage.getItem("token")
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/users/${id}`,newUser,{ headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log(response)
+      
+      dispatch({type:UPDATE_ONE_USER_SUCCESS})
+      getCurrentuser()
+      navigate("/profile")
+    } catch (error) {
+      console.log(error);
+      dispatch({type:UPDATE_ONE_USER_FAIL,payload:error})}};
+   
+      

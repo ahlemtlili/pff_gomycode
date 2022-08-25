@@ -43,6 +43,8 @@ import PrivateRouteTeacher from './Components/Privates/PrivateRouteTeacher';
 import Login from './Components/Login/Login';
 import RegisterP from './Components/RegisterP/RegisterP';
 import RegisterT from './Components/RegisterT/RegisterT';
+import Profile from './Components/Profile.js/Profile';
+import EditTeacher from './Components/EditTeacher/EditTeacher';
 
 const Container = styled.div`
   max-width: 100%;
@@ -73,7 +75,6 @@ function App() {
          <Route path="/AccountP" element={<RegisterP/>}/> 
          <Route path="/AccountT" element={<RegisterT/>}/>        
           <Route path='/contactUs' element={<ContactUs/>} />
-          <Route path='/footer' element={<Footer/>} />
                   {/* Admin Routes */}     
           <Route path="/pageAdmin" element={<PrivateRouteAdmin><PageAdmin/></PrivateRouteAdmin>}/>
           <Route path="/coursG" element={<PrivateRouteAdmin><CoursG/></PrivateRouteAdmin>}/>
@@ -85,6 +86,9 @@ function App() {
           <Route path="/editnoteG/:id" element={<PrivateRouteAdmin><EditNoteG/></PrivateRouteAdmin>} />
           <Route path="/pdfAdmin/:id" element={<PrivateRouteAdmin><PdfCourAdmin/></PrivateRouteAdmin>} />
                   {/* Teacher Routes */}
+          <Route path="/profile" element={<PrivateRouteTeacher><Profile/></PrivateRouteTeacher>}/>
+          <Route path="/editteacher/:id" element={<PrivateRouteTeacher><EditTeacher/></PrivateRouteTeacher>}/>
+
           <Route path="/pageTeacher" element={<PrivateRouteTeacher><PageTeacher/></PrivateRouteTeacher>}/>
           <Route path="/cours" element={<PrivateRouteTeacher><Cours/></PrivateRouteTeacher>}/>
           <Route path="/AddCours" element={<PrivateRouteTeacher><AddCours/></PrivateRouteTeacher>}/>
