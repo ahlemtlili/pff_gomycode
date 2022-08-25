@@ -22,6 +22,7 @@ export default function Note() {
       dispatch(getAllNotes());
       dispatch(getCurrentuser());
     }, []);
+    const currentUser = useSelector(state=>state.userReducer.currentUser)
   return (
     <div>
     <TableContainer component={Paper} style={{marginTop:"4rem"}}>
@@ -49,9 +50,14 @@ export default function Note() {
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.enseignant.firstName}  {el.enseignant.lastName}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.firstName}  {el.children.lastName}</TableCell>
               <TableCell align="left" style={{"fontSize":"20px" }}>{el.children.classe}</TableCell>
-              <TableCell align="left" style={{"fontSize":"20px" }}><div><Button style={{"fontSize":"20px"}} onClick ={()=> dispatch(deleteNote(el._id))} size="small"><MdDeleteSweep/>Delete</Button></div></TableCell>
-              <TableCell align="left" style={{"fontSize":"20px" }}><div><LinkR to={`/editnote/${el._id}`}> 
-                <Button style={{"fontSize":"20px"}} size="small"><GrUpdate/>Update</Button></LinkR></div></TableCell>
+              <TableCell align="left" style={{"fontSize":"20px" }}>
+                <div>{el.enseignant._id===currentUser._id?
+                  <Button style={{"fontSize":"20px"}} onClick ={()=> dispatch(deleteNote(el._id))} size="small"><MdDeleteSweep/>Delete</Button>:null  }
+                  </div></TableCell>
+              <TableCell align="left" style={{"fontSize":"20px" }}><div>
+              {el.enseignant._id===currentUser._id?<LinkR to={`/editnote/${el._id}`}> 
+                <Button style={{"fontSize":"20px"}} size="small"><GrUpdate/>Update</Button></LinkR>:null  }
+                </div></TableCell>
 
             </TableRow>
           ))}

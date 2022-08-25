@@ -82,9 +82,10 @@ export const getCurrentuser = () => async (dispatch) => {
   }
 };
 export const getAllEleves = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
   try {
     const response = await axios.get(
-      "http://localhost:5000/users/eleve",
+      "http://localhost:5000/users/eleve",{ headers: { Authorization: `Bearer ${token}` } }
       
     );
     dispatch({ type: GET_ELEVES_SUCCESS, payload: response.data });
@@ -95,9 +96,10 @@ export const getAllEleves = () => async (dispatch) => {
 };
 // get all parents
 export const getAllParents = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
   try {
     const response = await axios.get(
-      "http://localhost:5000/users/parents",
+      "http://localhost:5000/users/parents",{ headers: { Authorization: `Bearer ${token}` } }
       
     );
     dispatch({ type: GET_PARENTS_SUCCESS, payload: response.data });
@@ -108,9 +110,10 @@ export const getAllParents = () => async (dispatch) => {
 };
 // get all teachers
 export const getAllTeachers = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
   try {
     const response = await axios.get(
-      "http://localhost:5000/users/teachers",
+      "http://localhost:5000/users/teachers",{ headers: { Authorization: `Bearer ${token}` } }
       
     );
     dispatch({ type: GET_TEACHERS_SUCCESS, payload: response.data });
@@ -126,8 +129,9 @@ export const logoutUser = (navigate) => {
 
     // delete  parent action
     export const deleteParent = (id)=> async dispatch=>{
+      const token = localStorage.getItem("token");
       try {
-           const response=await axios.delete(`http://localhost:5000/users/parent/${id}`)
+           const response=await axios.delete(`http://localhost:5000/users/parent/${id}`,{ headers: { Authorization: `Bearer ${token}` } })
            dispatch({type:DELETE_PARENT_SUCCESS})
            dispatch(getAllParents())
           } catch (error) {
@@ -139,8 +143,9 @@ export const logoutUser = (navigate) => {
   
     // delete  teacher action
     export const deleteTeacher = (id)=> async dispatch=>{
+      const token = localStorage.getItem("token");
       try {
-           const response=await axios.delete(`http://localhost:5000/users/enseignant/${id}`)
+           const response=await axios.delete(`http://localhost:5000/users/enseignant/${id}`,{ headers: { Authorization: `Bearer ${token}` } })
            dispatch({type:DELETE_TEACHER_SUCCESS})
            dispatch(getAllTeachers())
           } catch (error) {
@@ -151,8 +156,9 @@ export const logoutUser = (navigate) => {
   }
     // delete  pupil action
     export const deletePupil = (id)=> async dispatch=>{
+      const token = localStorage.getItem("token");
       try {
-           const response=await axios.delete(`http://localhost:5000/users/eleve/${id}`)
+           const response=await axios.delete(`http://localhost:5000/users/eleve/${id}`,{ headers: { Authorization: `Bearer ${token}` } })
            dispatch({type:DELETE_PUPIL_SUCCESS})
            dispatch(getAllEleves())
 

@@ -18,9 +18,7 @@ router.post("/registeruser", registerRules(), validator, async (req, res) => {
     }
     const newUser = new User({ ...req.body });
     const hashedPassword = await bcrypt.hash(password, 10);
-    // console.log(hashedPassword);
     newUser.password = hashedPassword;
-    //erroooooooooooooooooooooooooooooooor: newUser={...newUser,password:password}
     await newUser.save();
     res.send({ msg: "user successfully registred", newUser });
   } catch (error) {
@@ -86,7 +84,7 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 // all pupils
-router.get("/eleve",async(req,res)=>{
+router.get("/eleve",isAuth(),isAdmin,async(req,res)=>{
   try {
     const eleves = await User.find({role:"eleve"});
     res.send(eleves);
@@ -96,7 +94,7 @@ router.get("/eleve",async(req,res)=>{
   }
 })
 //all parents
-router.get("/parents",async(req,res)=>{
+router.get("/parents",isAuth(),isAdmin,async(req,res)=>{
   try {
     const parents = await User.find({role:"parent"});
     res.send(parents);
@@ -106,7 +104,7 @@ router.get("/parents",async(req,res)=>{
   }
 })
 //all teachers
-router.get("/teachers",async(req,res)=>{
+router.get("/teachers",isAuth(),isAdmin,async(req,res)=>{
   try {
     const teachers = await User.find({role:"enseignant"});
     res.send(teachers);
@@ -116,7 +114,7 @@ router.get("/teachers",async(req,res)=>{
   }
 })
 // delete parent
-router.delete("/parent/:id",async(req,res)=>{
+router.delete("/parent/:id",isAuth(),isAdmin,async(req,res)=>{
   try {
     const parentDeleted=await User.deleteOne({_id:req.params.id})  
     if(parentDeleted.deletedCount){return res.send({msg:"parent deleted "})}
@@ -127,7 +125,7 @@ router.delete("/parent/:id",async(req,res)=>{
   }
 })
 // delete teacher
-router.delete("/enseignant/:id",async(req,res)=>{
+router.delete("/enseignant/:id",isAuth(),isAdmin,async(req,res)=>{
   try {
     const enseignantDeleted=await User.deleteOne({_id:req.params.id})
     const coursDeleted=await Cours.deleteMany({enseignant:req.params.id})  
@@ -139,7 +137,8 @@ router.delete("/enseignant/:id",async(req,res)=>{
       res.status(400).send("failed to delete") 
   }
 })
-router.delete("/eleve/:id",async(req,res)=>{
+// delete pupil
+router.delete("/eleve/:id",isAuth(),isAdmin,async(req,res)=>{
   try {
     const pupilDeleted=await User.deleteOne({_id:req.params.id}) 
     const notesDeleted=await Note.deleteMany({children:req.params.id})  
