@@ -67,13 +67,14 @@ router.get("/noteEleve",isAuth(),async(req,res)=>{
  
 }
 )
+// details note
 router.get("/details/:id",isAuth(),async(req,res)=>{
   try {
      const oneNote=await Note.findOne({_id:req.params.id}) 
      res.send({oneNote})  
     } catch (error) {
         console.log(error)
-        res.status(400).send("failed to get the product")
+        res.status(400).send("failed to get the note")
     }
  
 }

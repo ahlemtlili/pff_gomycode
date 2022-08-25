@@ -45,6 +45,8 @@ import RegisterP from './Components/RegisterP/RegisterP';
 import RegisterT from './Components/RegisterT/RegisterT';
 import Profile from './Components/Profile.js/Profile';
 import EditTeacher from './Components/EditTeacher/EditTeacher';
+import ProfileParent from './Components/ProfileParent/ProfileParent';
+import EditParent from './Components/EditParent/EditParent';
 
 const Container = styled.div`
   max-width: 100%;
@@ -98,6 +100,9 @@ function App() {
           <Route path="/editnote/:id" element={<PrivateRouteTeacher><EditNote/></PrivateRouteTeacher>} />
           <Route path="/pdf/:id" element={<PrivateRouteTeacher><PdfCour/></PrivateRouteTeacher>} />
                   {/* parent Routes */}
+            <Route path="/profileParent" element={<PrivateRouteParent><ProfileParent/></PrivateRouteParent>}/>
+          <Route path="/editparent/:id" element={<PrivateRouteParent><EditParent/></PrivateRouteParent>}/>
+
            <Route path="/pageParent" element={<PrivateRouteParent><PageParent/></PrivateRouteParent>}/>
           <Route path="/coursParent" element={<PrivateRouteParent><CoursParent/></PrivateRouteParent>}/>
           <Route path="/noteParent" element={<PrivateRouteParent><NoteParent/></PrivateRouteParent>}/>

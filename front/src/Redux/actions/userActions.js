@@ -10,10 +10,15 @@ import {
   GET_CURRENT_USER_SUCCESS,
   GET_ELEVES_FAIL,
   GET_ELEVES_SUCCESS,
+  GET_ONE_USER_FAIL,
+  GET_ONE_USER_SUCCESS,
   GET_PARENTS_FAIL,
   GET_PARENTS_SUCCESS,
   GET_TEACHERS_FAIL,
   GET_TEACHERS_SUCCESS,
+  GET_USERS_FAIL,
+  GET_USERS_LOADING,
+  GET_USERS_SUCCESS,
   LOGOUT,
 
   SIGNIN_USER_FAIL,
@@ -169,20 +174,52 @@ export const logoutUser = (navigate) => {
               dispatch({type:DELETE_PUPIL_FAIL , payload:error})
            }
   }
+  
+export const getAllUsers = ()=> async dispatch=>{
+  dispatch({type:GET_USERS_LOADING})
+  try {
+      const response=await axios.get('http://localhost:5000/users/')
+      dispatch({type: GET_USERS_SUCCESS, payload:response.data})
+  } catch (error) {
+      console.log(error)
+      dispatch({type: GET_USERS_FAIL, payload: error})
+  }
 
+}
+  export const getOneUser=(id) => async (dispatch) => {
+    const token=localStorage.getItem("token")
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/users/details/${id}`,{ headers: { Authorization: `Bearer ${token}` } }
+      );
+      dispatch({type:GET_ONE_USER_SUCCESS,payload:response.data.oneUser})
+    } catch (error) {
+      console.log(error);
+      dispatch({type:GET_ONE_USER_FAIL,payload:error})
+    }
+  };
   export const editUser=(id,newUser,navigate) => async (dispatch) => {
     const token=localStorage.getItem("token")
     try {
       const response = await axios.put(
         `http://localhost:5000/users/${id}`,newUser,{ headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log(response)
-      
       dispatch({type:UPDATE_ONE_USER_SUCCESS})
-      getCurrentuser()
+      dispatch(getCurrentuser())
       navigate("/profile")
     } catch (error) {
       console.log(error);
       dispatch({type:UPDATE_ONE_USER_FAIL,payload:error})}};
-   
-      
+      export const editParent=(id,newUser,navigate) => async (dispatch) => {
+        const token=localStorage.getItem("token")
+        try {
+          const response = await axios.put(
+            `http://localhost:5000/users/${id}`,newUser,{ headers: { Authorization: `Bearer ${token}` } }
+          );
+          dispatch({type:UPDATE_ONE_USER_SUCCESS})
+          dispatch(getCurrentuser())
+          navigate("/profileParent")
+        } catch (error) {
+          console.log(error);
+          dispatch({type:UPDATE_ONE_USER_FAIL,payload:error})}};
+    

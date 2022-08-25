@@ -84,7 +84,7 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 // all pupils
-router.get("/eleve",isAuth(),isAdmin,async(req,res)=>{
+router.get("/eleve",isAuth(),async(req,res)=>{
   try {
     const eleves = await User.find({role:"eleve"});
     res.send(eleves);
@@ -94,7 +94,7 @@ router.get("/eleve",isAuth(),isAdmin,async(req,res)=>{
   }
 })
 //all parents
-router.get("/parents",isAuth(),isAdmin,async(req,res)=>{
+router.get("/parents",isAuth(),async(req,res)=>{
   try {
     const parents = await User.find({role:"parent"});
     res.send(parents);
@@ -104,7 +104,7 @@ router.get("/parents",isAuth(),isAdmin,async(req,res)=>{
   }
 })
 //all teachers
-router.get("/teachers",isAuth(),isAdmin,async(req,res)=>{
+router.get("/teachers",isAuth(),async(req,res)=>{
   try {
     const teachers = await User.find({role:"enseignant"});
     res.send(teachers);
@@ -151,6 +151,7 @@ router.delete("/eleve/:id",isAuth(),isAdmin,async(req,res)=>{
       res.status(400).send("failed to delete") 
   }
 })
+//edit user
 router.put("/:id",isAuth(),async(req,res)=>{
   try {
    const result=await User.updateOne({_id:req.params.id},{$set:{...req.body}})
@@ -163,5 +164,17 @@ router.put("/:id",isAuth(),async(req,res)=>{
     res.status(400).send("failed to update")
   }
 })
+// details user
+router.get("/details/:id",isAuth(),async(req,res)=>{
+  try {
+     const oneUser=await User.findOne({_id:req.params.id}) 
+     res.send({oneUser})  
+    } catch (error) {
+        console.log(error)
+        res.status(400).send("failed to get the user")
+    }
+ 
+}
+)
 
 module.exports = router;

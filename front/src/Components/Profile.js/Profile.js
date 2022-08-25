@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 export default function Profile() {
   const currentUser = useSelector(state=>state.userReducer.currentUser)
   return ( 
-    <div style={{marginLeft:"750px",marginTop:"200px"}}>
-   <Card style={{width:"400px"}}>
+    <div>
+   <Card style={{width:"400px",marginLeft:"750px",marginTop:"120px"}}>
       <CardMedia
         component="img"
         height="300"
@@ -38,9 +38,19 @@ export default function Profile() {
 
       </CardContent>
       <CardActions>
-       <Link to={`/editteacher/${currentUser._id}`}><Button size="small">Edit</Button></Link>
+       <Link to={`/editteacher/${currentUser._id}`}><Button style={{fontSize:"25px",marginLeft:"130px"}} size="small">Edit</Button></Link>
       </CardActions>
     </Card>
+    <Link to="/pageTeacher">
+    <Button style={{"fontSize":"20px", "width":"200px","backgroundColor":"blue" , "color":"white" , "marginTop":"60px"}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >     
+      Retour
+    </Button>
+  </Link>
     </div>
     
   );

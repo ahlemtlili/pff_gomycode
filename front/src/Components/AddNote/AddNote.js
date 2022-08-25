@@ -25,7 +25,6 @@ export default function AddNote() {
   const [children, setChildren] = React.useState("");
   const [nameMatiere, setNameMatiere] = React.useState("");
   const [note, setNote] = React.useState("");
-  const [classe, setClasse] = React.useState("");
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getAllEleves());
@@ -36,7 +35,7 @@ export default function AddNote() {
     dispatch(addNote({nameMatiere:nameMatiere,note:note,children:children},navigate));
   };
 
-  const eleves = useSelector((state) => state.userReducer.eleves);
+  const eleves= useSelector((state) => state.userReducer.eleves);
 
   return (
     <div>

@@ -14,17 +14,17 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link as LinkR,  useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { editUser, getOneUser } from "../../Redux/actions/userActions";
+import { editParent, editUser, getOneUser } from "../../Redux/actions/userActions";
 
 const theme = createTheme();
 
-export default function EditTeacher() {
+export default function Parent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
   
-    dispatch(editUser(id, updatedUser, navigate));
+    dispatch(editParent(id, updatedUser, navigate));
   };
   
   const { id } = useParams();
@@ -169,7 +169,7 @@ export default function EditTeacher() {
             </Button>
           </Box>
         </Box>
-        <Link to="/profile">
+        <Link to="/profileParent">
           <Button style={{"fontSize":"23px"}}
             type="submit"
             fullWidth
@@ -181,7 +181,7 @@ export default function EditTeacher() {
         </Link>
       </Container>
     </ThemeProvider>
-    <LinkR to="/profile">
+    <LinkR to="/profileParent">
     <Button style={{"fontSize":"20px", "width":"200px","backgroundColor":"blue" , "color":"white" , "marginTop":"158px"}}
             type="submit"
             fullWidth

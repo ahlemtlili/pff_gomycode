@@ -5,11 +5,16 @@ import {
   GET_CURRENT_USER_SUCCESS,
   GET_ELEVES_FAIL,
   GET_ELEVES_SUCCESS,
+  GET_ONE_USER_FAIL,
+  GET_ONE_USER_SUCCESS,
   GET_PARENTS_FAIL,
   GET_PARENTS_SUCCESS,
 
   GET_TEACHERS_FAIL,
   GET_TEACHERS_SUCCESS,
+  GET_USERS_FAIL,
+  GET_USERS_LOADING,
+  GET_USERS_SUCCESS,
   LOGOUT,
   SIGNIN_USER_FAIL,
   SIGNIN_USER_SUCCESS,
@@ -27,12 +32,14 @@ const initialState = {
   eleves:[],
   parents:[],
   enseignants:[],
-  oneUser:{}
-  
+  oneUser:{},
+  users:[]
 };
 export const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-   
+    case GET_USERS_LOADING: return {...state, loading:true}
+        case GET_USERS_SUCCESS: return {...state,users:payload, loading:false}        
+        case GET_USERS_FAIL: return {...state, errors: payload, loading:false}
     case DELETE_PARENT_FAIL: return {...state, errors: payload}
   case DELETE_TEACHER_FAIL: return {...state, errors: payload}
     case SIGNUP_USER_SUCCESS:
@@ -67,6 +74,8 @@ export const userReducer = (state = initialState, { type, payload }) => {
                 case GET_TEACHERS_FAIL:
                   return { ...state, errors: payload };
                   case UPDATE_ONE_USER_FAIL: return {...state, errors: payload}
+                  case GET_ONE_USER_SUCCESS:return{...state,oneUser:payload}
+                  case GET_ONE_USER_FAIL: return {...state, errors: payload}
 
     case LOGOUT:
       localStorage.removeItem("token");
