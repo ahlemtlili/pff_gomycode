@@ -111,7 +111,7 @@ router.get("/details/:id",isAuth(),async(req,res)=>{
      res.send({oneCours})  
     } catch (error) {
         console.log(error)
-        res.status(400).send("failed to get the product")
+        res.status(400).send("failed to get the cours")
     }
  
 }

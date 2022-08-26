@@ -6,7 +6,7 @@ const PrivateRouteTeacher = ({children}) => {
 
   return (
     <div>
-        {currentUser && currentUser.role==='enseignant'?children:<Navigate to="/login"/>}
+        {localStorage.getItem('token') && currentUser.role==='enseignant'?children:<Navigate to="/login"/>}
     </div>
   )
 }

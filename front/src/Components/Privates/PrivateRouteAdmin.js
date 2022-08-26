@@ -5,7 +5,7 @@ const PrivateRouteAdmin = ({children}) => {
   const currentUser=JSON.parse(localStorage.getItem('user'))
   return (
     <div>
-        {currentUser && currentUser.role==='admin'?children:<Navigate to="/login"/>}
+        {localStorage.getItem('token') && currentUser.role==='admin'?children:<Navigate to="/login"/>}
     </div>
   )
 }
