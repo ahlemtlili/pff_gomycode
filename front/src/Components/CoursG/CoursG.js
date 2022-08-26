@@ -65,7 +65,7 @@ export default function CoursG() {
     <div style={{"display":"flex","justifyContent":'space-around',"marginTop":"20px" , "marginBottom":"50px"}}>  
 
  </div>
- <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white","backgroundColor":"blue"}} to='/pageAdmin'>Retour</Link>
+ <Link type="button" class="btn btn-primary"  style={{"fontSize":"25px" , "color":"white","backgroundColor":"blue",marginTop:"20px"}} to='/pageAdmin'>Retour</Link>
  </div> 
   );
 }

@@ -20,7 +20,7 @@ const CoursParent = () => {
     {cours.map(el=><CoursParentCard el={el} key={el._id}/>)}
 </div>
 <Link to="/pageParent">
-<Button style={{ "width":"200px","backgroundColor":"blue" , "color":"white"}}
+<Button style={{ "width":"200px","backgroundColor":"blue" , "color":"white",marginTop:"100px"}}
             type="submit"
             fullWidth
             variant="contained"
